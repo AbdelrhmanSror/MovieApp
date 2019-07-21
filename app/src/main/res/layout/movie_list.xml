@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="movie"
+                type="com.example.sunshine.movieapp.domain.Domain"/>
+        <variable name="ListenerCallBack"
+                  type="com.example.sunshine.movieapp.home.HomeAdapter.OnClickListener"/>
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:onClick="@{()->ListenerCallBack.onClick(movie)}"
+            tools:context=".MainActivity">
+
+
+        <ImageView
+                android:id="@+id/poster"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                app:imgSrcUrl="@{movie.posterPath}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/ic_launcher_foreground"
+               />
+
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@{movie.title}"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/poster"
+                tools:text="Shazam"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/poster"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

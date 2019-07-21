@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation" app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="com.example.sunshine.movieapp.home.HomeFragment"
+              android:label="HomeFragment">
+        <action android:id="@+id/action_homeFragment_to_fragmentDetails" app:destination="@id/fragmentDetails"/>
+    </fragment>
+    <fragment android:id="@+id/fragmentDetails"
+              android:name="com.example.sunshine.movieapp.details.FragmentDetails"
+              android:label="FragmentDetails">
+    <argument android:name="MoviesArg"
+    app:argType="com.example.sunshine.movieapp.domain.Domain"/>
+    </fragment>
+</navigation>

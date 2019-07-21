@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Popularity"
+          android:id="@+id/popularity"
+    app:showAsAction="never"/>
+    <item android:title="Release Date"
+          android:id="@+id/releaseDate"
+    app:showAsAction="never"/>
+    <item android:title="Revenue"
+          android:id="@+id/revenue"
+    app:showAsAction="never"/>
+</menu>
