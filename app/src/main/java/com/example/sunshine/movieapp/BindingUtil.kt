@@ -6,18 +6,12 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.sunshine.movieapp.database.MovieEntity
-import com.example.sunshine.movieapp.domain.Domain
 import com.example.sunshine.movieapp.home.HomeAdapter
 import com.example.sunshine.movieapp.home.MoviesStatus
-import androidx.databinding.adapters.ImageViewBindingAdapter.setImageDrawable
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
-import android.graphics.Bitmap
+import androidx.paging.PagedList
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.target.BitmapImageViewTarget
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.sunshine.movieapp.database.MovieEntity
 
 
 //take an image url and download the poster using glide and load it to image
@@ -34,7 +28,7 @@ fun imageSrc(imageView: ImageView, imgUrl: String?) {
 
 //setup adapter with list of movies
 @BindingAdapter("movieList")
-fun listMovie(recyclerView: RecyclerView, movieList: List<Domain>?) {
+fun listMovie(recyclerView: RecyclerView, movieList: PagedList<MovieEntity>) {
     val adapter = recyclerView.adapter as HomeAdapter
     adapter.submitList(movieList)
 }

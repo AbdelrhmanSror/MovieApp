@@ -11,6 +11,6 @@
               android:name="com.example.sunshine.movieapp.details.FragmentDetails"
               android:label="FragmentDetails">
     <argument android:name="MoviesArg"
-    app:argType="com.example.sunshine.movieapp.domain.Domain"/>
+    app:argType="com.example.sunshine.movieapp.database.MovieEntity"/>
     </fragment>
 </navigation>

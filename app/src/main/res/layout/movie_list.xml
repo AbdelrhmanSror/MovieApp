@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="movie"
-                type="com.example.sunshine.movieapp.domain.Domain"/>
+                type="com.example.sunshine.movieapp.database.MovieEntity"/>
         <variable name="ListenerCallBack"
                   type="com.example.sunshine.movieapp.home.HomeAdapter.OnClickListener"/>
 

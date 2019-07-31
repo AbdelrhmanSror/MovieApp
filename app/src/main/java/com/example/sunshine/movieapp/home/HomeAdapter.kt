@@ -2,24 +2,24 @@ package com.example.sunshine.movieapp.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sunshine.movieapp.database.MovieEntity
 import com.example.sunshine.movieapp.databinding.MovieListBinding
-import com.example.sunshine.movieapp.domain.Domain
 import com.example.sunshine.movieapp.home.HomeAdapter.viewHolder.Companion.from
-class HomeAdapter(val onClickListener:OnClickListener) : ListAdapter<Domain, RecyclerView.ViewHolder>(diffCallBack) {
+class HomeAdapter(val onClickListener:OnClickListener) : PagedListAdapter<MovieEntity, RecyclerView.ViewHolder>(diffCallBack) {
     /**
      * diff util class to calculate the difference between two list if the the old list has changed
      *with minimum changes it can do
      */
-    object diffCallBack : DiffUtil.ItemCallback<Domain>() {
-        override fun areItemsTheSame(oldItem: Domain, newItem: Domain): Boolean {
+    object diffCallBack : DiffUtil.ItemCallback<MovieEntity>() {
+        override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Domain, newItem: Domain): Boolean {
-            return oldItem.movieId== newItem.movieId
+        override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
+            return oldItem.id== newItem.id
         }
 
     }
@@ -35,7 +35,7 @@ class HomeAdapter(val onClickListener:OnClickListener) : ListAdapter<Domain, Rec
                 return viewHolder(root)
             }
         }
-        fun bind(movie: Domain, onClickListener: OnClickListener)
+        fun bind(movie:MovieEntity?, onClickListener: OnClickListener)
         {
             item.movie=movie
             item.listenerCallBack=onClickListener
@@ -55,9 +55,9 @@ class HomeAdapter(val onClickListener:OnClickListener) : ListAdapter<Domain, Rec
 
     }
     //listener class to be used when click event happens
-    class OnClickListener(val onClickListener:(Domain)->Unit)
+    class OnClickListener(val onClickListener:(MovieEntity)->Unit)
     {
-        fun onClick(movie: Domain)=onClickListener(movie)
+        fun onClick(movie: MovieEntity)=onClickListener(movie)
     }
 
 

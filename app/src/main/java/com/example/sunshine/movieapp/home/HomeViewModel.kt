@@ -3,7 +3,7 @@ package com.example.sunshine.movieapp.home
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.sunshine.movieapp.database.MovieDatabase
 import com.example.sunshine.movieapp.network.sort

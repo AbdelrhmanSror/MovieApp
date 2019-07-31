@@ -1,24 +1,23 @@
 package com.example.sunshine.movieapp.repositry
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import com.example.sunshine.movieapp.API_KEY
 import com.example.sunshine.movieapp.database.MovieDatabase
-import com.example.sunshine.movieapp.database.asDomainModel
-import com.example.sunshine.movieapp.domain.Domain
+import com.example.sunshine.movieapp.database.MovieEntity
 import com.example.sunshine.movieapp.network.MovieService
 import com.example.sunshine.movieapp.network.asDataBaseModel
-import com.example.sunshine.movieapp.network.sort.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MoviesRepos(private val database: MovieDatabase) {
     //function to get list of movies in database
-    fun getMovies():LiveData<List<Domain>>{
-        return Transformations.map(database.movieDao.getMovies()) {
-            //converting data from database to domain model to be used in our app
-            it.asDomainModel()
-        }
+    fun getMovies():LiveData<PagedList<MovieEntity>>{
+        val pagingFactory=database.movieDao.getMovies()
+        return pagingFactory.toLiveData(pageSize = 14)
+
+
     }
    suspend fun refreshMovies(sort:String)
     {

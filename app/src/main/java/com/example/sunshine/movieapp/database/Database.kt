@@ -2,13 +2,14 @@ package com.example.sunshine.movieapp.database
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 @Dao
 interface MovieDao{
 
     //inserting movies data into data base
     @Query("SELECT * FROM movieentity ")
-    fun getMovies():LiveData<List<MovieEntity>>
+    fun getMovies():DataSource.Factory<Int,MovieEntity>
     //insert and update at the same time if the data is existed in database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll( movies:List<MovieEntity>)
